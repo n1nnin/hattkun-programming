@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import TargetAudience from '../components/TargetAudience.astro';
+import ScratchGallery from '../components/ScratchGallery.astro';
+import About from '../components/About.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import Blog from '../components/Blog.astro';
+import Access from '../components/Access.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Hero />
+
+    <!-- Wave: hero(navy) → sky-light -->
+    <div class="relative -mt-1 bg-navy">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="#F0F7FF"/>
+      </svg>
+    </div>
+
+    <Features />
+
+    <TargetAudience />
+
+    <!-- Wave: sky → sky-light -->
+    <div class="relative -mt-1 bg-sky">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C240,60 480,0 720,40 C960,80 1200,20 1440,40 L1440,80 L0,80 Z" fill="#F0F7FF"/>
+      </svg>
+    </div>
+
+    <ScratchGallery />
+
+    <!-- Wave: sky-light → sky (about) -->
+    <div class="relative -mt-1">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,30 1440,40 L1440,80 L0,80 Z" fill="#E0EFFF"/>
+      </svg>
+    </div>
+
+    <About />
+
+    <!-- Wave: sky → sky-light (pricing) -->
+    <div class="relative -mt-1 bg-sky">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,30 C240,70 480,10 720,50 C960,80 1200,30 1440,40 L1440,80 L0,80 Z" fill="#F0F7FF"/>
+      </svg>
+    </div>
+
+    <Pricing />
+
+    <!-- Wave: sky-light → sky (FAQ) -->
+    <div class="relative -mt-1">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C360,70 720,10 1080,50 C1260,70 1380,50 1440,30 L1440,80 L0,80 Z" fill="#E0EFFF"/>
+      </svg>
+    </div>
+
+    <FAQ />
+
+    <!-- Wave: sky → sky-light (blog) -->
+    <div class="relative -mt-1 bg-sky">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C240,0 480,60 720,30 C960,0 1200,60 1440,40 L1440,80 L0,80 Z" fill="#F0F7FF"/>
+      </svg>
+    </div>
+
+    <Blog />
+
+    <!-- Wave: sky-light → sky-light (access) -->
+    <div class="relative -mt-1">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,30 C360,70 720,10 1080,50 C1260,30 1380,40 1440,30 L1440,80 L0,80 Z" fill="#F0F7FF"/>
+      </svg>
+    </div>
+
+    <Access />
+
+    <!-- Wave: sky-light → navy-light (contact) -->
+    <div class="relative -mt-1">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="#1E293B"/>
+      </svg>
+    </div>
+
+    <Contact />
+
+    <!-- Wave: navy-light → navy (footer) -->
+    <div class="relative -mt-1 bg-navy-light">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C360,60 720,0 1080,40 C1260,60 1380,40 1440,20 L1440,80 L0,80 Z" fill="#0F172A"/>
+      </svg>
+    </div>
+  </main>
+  <Footer />
+</Layout>

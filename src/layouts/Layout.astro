@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'ハットくんのスクラッチプログラミング教室 | 磐田市のプログラミング教室',
+  description = '静岡県磐田市のプログラミング教室。Scratch（スクラッチ）を使って、論理的思考力・想像力・問題解決能力を楽しく育みます。小学生対象、体験レッスン受付中。',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:url" content="https://hattkun.hattoripiano-lesson.com/" />
+    <meta property="og:site_name" content="ハットくんのスクラッチプログラミング教室" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href="https://hattkun.hattoripiano-lesson.com/" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Fira+Code:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "ハットくんのスクラッチプログラミング教室",
+      "description": "静岡県磐田市のプログラミング教室。Scratch（スクラッチ）を使って、論理的思考力・想像力・問題解決能力を楽しく育みます。",
+      "url": "https://hattkun.hattoripiano-lesson.com/",
+      "telephone": "090-6582-3585",
+      "email": "hattchi23@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "水堀160番地",
+        "addressLocality": "磐田市",
+        "addressRegion": "静岡県",
+        "postalCode": "438-0085",
+        "addressCountry": "JP"
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:00", "closes": "19:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:00", "closes": "19:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:00", "closes": "19:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "19:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "19:00"}
+      ],
+      "sameAs": [
+        "https://www.instagram.com/hattokun1/"
+      ]
+    })} />
+  </head>
+  <body class="bg-sky-light text-navy">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-navy focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">
+      メインコンテンツへスキップ
+    </a>
+    <div id="main-content">
+      <slot />
+    </div>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.observe-fade').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

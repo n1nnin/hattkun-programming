@@ -1,0 +1,76 @@
+---
+
+---
+
+<section class="relative min-h-[80vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-navy via-navy-light to-slate">
+  <!-- Animated Background Grid -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(59,130,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <!-- Floating Code Symbols -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <span class="absolute top-[10%] left-[5%] font-mono text-3xl md:text-5xl text-blue/20 animate-float" style="animation-delay: 0s;">{'{'}</span>
+    <span class="absolute top-[15%] right-[10%] font-mono text-2xl md:text-4xl text-purple/20 animate-float" style="animation-delay: 0.5s;">{'}'}</span>
+    <span class="absolute top-[30%] left-[15%] font-mono text-2xl md:text-3xl text-cyan/20 animate-float" style="animation-delay: 1s;">&lt;/&gt;</span>
+    <span class="absolute bottom-[25%] right-[8%] font-mono text-3xl md:text-5xl text-blue-light/20 animate-float" style="animation-delay: 1.5s;">( )</span>
+    <span class="absolute bottom-[15%] left-[10%] font-mono text-2xl md:text-4xl text-purple/15 animate-float" style="animation-delay: 0.8s;">[ ]</span>
+    <span class="absolute top-[50%] right-[20%] font-mono text-xl md:text-3xl text-cyan/15 animate-float" style="animation-delay: 2s;">#</span>
+    <span class="absolute top-[60%] left-[25%] font-mono text-xl md:text-2xl text-orange/15 animate-float" style="animation-delay: 1.2s;">**</span>
+    <span class="absolute top-[20%] left-[50%] font-mono text-2xl md:text-4xl text-blue/15 animate-float" style="animation-delay: 0.3s;">;</span>
+    <span class="absolute bottom-[35%] right-[30%] font-mono text-xl md:text-3xl text-purple/20 animate-float" style="animation-delay: 1.8s;">=&gt;</span>
+  </div>
+
+  <!-- Gradient Orbs -->
+  <div class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple/10 rounded-full blur-3xl" aria-hidden="true"></div>
+  <div class="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-blue/10 rounded-full blur-3xl" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto observe-fade">
+    <!-- Accent Text -->
+    <p class="font-accent text-2xl md:text-3xl mb-4 opacity-80 tracking-wide text-blue-light">
+      Hatkun Programming School
+    </p>
+
+    <!-- Main Heading -->
+    <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-wide">
+      <span class="gradient-text">プログラミング</span>で、<br class="hidden sm:inline" />未来をつくろう！
+    </h1>
+
+    <!-- Subheading -->
+    <p class="font-body text-lg md:text-xl opacity-90 mb-3 leading-relaxed max-w-2xl mx-auto">
+      Scratch（スクラッチ）で楽しく学ぶ、<br class="sm:hidden" />磐田市のプログラミング教室
+    </p>
+
+    <!-- Decorative code snippet -->
+    <div class="inline-block bg-navy/60 backdrop-blur-sm rounded-lg px-4 py-2 mb-10 border border-slate/30">
+      <code class="font-mono text-sm md:text-base">
+        <span class="text-purple">const</span> <span class="text-blue-light">future</span> <span class="text-white">=</span> <span class="text-orange">create</span><span class="text-white">(</span><span class="text-cyan">imagination</span><span class="text-white">);</span>
+      </code>
+    </div>
+
+    <!-- CTA Button -->
+    <div>
+      <a
+        href="#contact"
+        class="inline-block gradient-bg hover:opacity-90 text-white font-body font-medium rounded-full px-8 py-4 text-base md:text-lg transition-all duration-300 shadow-lg shadow-blue/25 hover:shadow-xl hover:shadow-blue/30 hover:-translate-y-0.5"
+      >
+        体験レッスンに申し込む
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce hidden md:block">
+    <svg
+      class="w-6 h-10 text-white/50"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 40"
+      aria-hidden="true"
+    >
+      <rect x="1" y="1" width="22" height="38" rx="11" stroke-width="2" />
+      <circle cx="12" cy="12" r="3" fill="currentColor" class="animate-pulse" />
+    </svg>
+  </div>
+</section>

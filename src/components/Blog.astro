@@ -1,0 +1,93 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 6)
+  .map((post) => ({
+    title: post.data.title,
+    slug: post.id,
+    date: (() => {
+      const d = new Date(post.data.date);
+      return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+    })(),
+    description: post.data.description ?? '',
+    scratchId: post.data.scratchId,
+    grade: post.data.grade,
+  }));
+---
+
+<section id="blog" class="py-20 md:py-28 bg-sky-light">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Heading -->
+    <div class="text-center mb-14 observe-fade">
+      <p class="font-accent text-2xl text-blue mb-2">Blog</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-navy">最新の投稿</h2>
+      <p class="mt-4 text-slate">教室の様子やプログラミングに関する情報をお届けしています</p>
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.slug}/`}
+            class="group block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 observe-fade"
+          >
+            {post.scratchId && (
+              <img
+                src={`https://cdn2.scratch.mit.edu/get_image/project/${post.scratchId}_480x360.png`}
+                alt={post.title}
+                class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <time class="text-sm text-gray font-medium">{post.date}</time>
+                {post.grade && (
+                  <span class:list={[
+                    "text-xs font-bold px-2 py-0.5 rounded-full",
+                    post.grade === "1-2年生" ? "bg-green-100 text-green-700" :
+                    post.grade === "3-4年生" ? "bg-orange/10 text-orange" :
+                    "bg-blue/10 text-blue",
+                  ]}>
+                    {post.grade}
+                  </span>
+                )}
+              </div>
+              <h3 class="font-heading text-lg font-bold text-navy mt-1 mb-3 group-hover:text-blue transition-colors duration-300 line-clamp-2">
+                {post.title}
+              </h3>
+              <p class="text-sm text-slate leading-relaxed line-clamp-3">
+                {post.description}
+              </p>
+            </div>
+            <div class="px-6 pb-4">
+              <span class="text-sm text-blue group-hover:underline">
+                続きを読む →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-12 observe-fade">
+        <p class="text-slate mb-2">ブログ記事はまだありません。</p>
+      </div>
+    )}
+
+    <!-- Blog Link -->
+    {posts.length > 0 && (
+      <div class="text-center observe-fade">
+        <a
+          href="/blog/"
+          class="inline-block border-2 border-blue text-blue hover:bg-blue hover:text-white font-heading font-medium rounded-full px-8 py-3 transition-colors duration-300"
+        >
+          ブログ一覧を見る
+        </a>
+      </div>
+    )}
+  </div>
+</section>

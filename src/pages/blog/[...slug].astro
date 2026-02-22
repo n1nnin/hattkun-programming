@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const d = new Date(post.data.date);
+const dateStr = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+---
+
+<Layout title={`${post.data.title} | ハットくんのスクラッチプログラミング教室`}>
+  <Header />
+  <main class="pt-24 pb-20 bg-sky-light min-h-screen">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Back Link -->
+      <div class="mb-8">
+        <a href="/blog/" class="text-blue hover:text-blue-dark font-medium transition-colors duration-300 inline-flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+          ブログ一覧に戻る
+        </a>
+      </div>
+
+      <!-- Article Header -->
+      <header class="mb-8">
+        <div class="flex items-center gap-3 mb-4">
+          <time class="text-sm text-gray font-medium">{dateStr}</time>
+          {post.data.grade && (
+            <span class:list={[
+              "text-xs font-bold px-3 py-1 rounded-full",
+              post.data.grade === "1-2年生" ? "bg-green-100 text-green-700" :
+              post.data.grade === "3-4年生" ? "bg-orange/10 text-orange" :
+              "bg-blue/10 text-blue",
+            ]}>
+              {post.data.grade}
+            </span>
+          )}
+        </div>
+        <h1 class="font-heading text-3xl md:text-4xl font-bold text-navy">
+          {post.data.title}
+        </h1>
+      </header>
+
+      <!-- Scratch Embed -->
+      {post.data.scratchId && (
+        <div class="mb-8 bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="relative w-full" style="padding-bottom: 82.89%;">
+            <iframe
+              src={`https://scratch.mit.edu/projects/${post.data.scratchId}/embed`}
+              class="absolute inset-0 w-full h-full"
+              allowfullscreen
+              title={`${post.data.title} - Scratchプロジェクト`}
+            ></iframe>
+          </div>
+          <div class="px-5 py-3 bg-sky border-t border-sky text-center">
+            <a
+              href={`https://scratch.mit.edu/projects/${post.data.scratchId}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-blue hover:text-blue-dark font-medium transition-colors duration-200 inline-flex items-center gap-1"
+            >
+              Scratchで開く
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+      )}
+
+      <!-- Article Content -->
+      <div class="bg-white rounded-2xl shadow-md p-8 md:p-10 prose prose-navy max-w-none
+        [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-navy [&_h2]:mt-8 [&_h2]:mb-4
+        [&_h3]:font-heading [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-navy [&_h3]:mt-6 [&_h3]:mb-3
+        [&_p]:font-body [&_p]:text-slate [&_p]:leading-relaxed [&_p]:mb-4
+        [&_ol]:text-slate [&_ol]:leading-relaxed [&_ol]:mb-4 [&_ol]:pl-6 [&_ol]:list-decimal
+        [&_ul]:text-slate [&_ul]:leading-relaxed [&_ul]:mb-4 [&_ul]:pl-6 [&_ul]:list-disc
+        [&_li]:mb-1
+        [&_strong]:text-navy
+        [&_a]:text-blue [&_a]:underline hover:[&_a]:text-blue-dark
+      ">
+        <Content />
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-10 flex justify-between items-center">
+        <a href="/blog/" class="text-blue hover:text-blue-dark font-heading font-medium transition-colors duration-300">
+          ← ブログ一覧
+        </a>
+        <a href="/" class="text-blue hover:text-blue-dark font-heading font-medium transition-colors duration-300">
+          トップページ →
+        </a>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

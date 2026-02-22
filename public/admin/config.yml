@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: your-username/hattkun-programming  # ← GitHubリポジトリに合わせて変更してください
+  branch: main
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+locale: ja
+
+collections:
+  - name: posts
+    label: 投稿記事
+    label_singular: 記事
+    folder: src/content/posts
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title"]
+    view_groups:
+      - label: 学年
+        field: grade
+    fields:
+      - label: タイトル
+        name: title
+        widget: string
+      - label: 投稿日
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - label: Scratch プロジェクトID
+        name: scratchId
+        widget: string
+        required: false
+        hint: "ScratchのプロジェクトURL(https://scratch.mit.edu/projects/XXXXX)のXXXXX部分を入力"
+      - label: 対象学年
+        name: grade
+        widget: select
+        required: false
+        options:
+          - label: "小学1-2年生"
+            value: "1-2年生"
+          - label: "小学3-4年生"
+            value: "3-4年生"
+          - label: "小学5-6年生"
+            value: "5-6年生"
+        hint: "Scratch作品の場合、対象学年を選択"
+      - label: 概要（一覧表示用）
+        name: description
+        widget: string
+        required: false
+        hint: "カード表示用の短い説明文"
+      - label: 本文
+        name: body
+        widget: markdown

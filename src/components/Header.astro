@@ -1,0 +1,129 @@
+---
+const navLinks = [
+  { label: "ホーム", href: "#" },
+  { label: "特徴", href: "#features" },
+  { label: "作品ギャラリー", href: "#gallery" },
+  { label: "講師紹介", href: "#about" },
+  { label: "料金", href: "#pricing" },
+  { label: "よくある質問", href: "#faq" },
+  { label: "アクセス", href: "#access" },
+];
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 left-0 w-full z-50 bg-navy/90 backdrop-blur-md transition-shadow duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 font-heading text-lg md:text-xl text-white font-bold tracking-wide">
+        <svg class="w-7 h-7 text-blue-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+        <span>ハットくんの<span class="hidden sm:inline">プログラミング</span>教室</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden xl:flex items-center gap-6" role="navigation" aria-label="メインナビゲーション">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-gray-light text-sm font-body hover:text-blue-light transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-blue after:transition-all after:duration-300 hover:after:w-full"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="#contact"
+          class="gradient-bg text-white text-sm font-body font-medium rounded-full px-6 py-2.5 hover:opacity-90 transition-opacity duration-200 shadow-sm"
+        >
+          お問い合わせ
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="xl:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 group"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+      >
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300 group-[.open]:opacity-0"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="xl:hidden hidden bg-navy/95 backdrop-blur-md border-t border-slate/50"
+    aria-hidden="true"
+  >
+    <nav class="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-4" role="navigation" aria-label="モバイルナビゲーション">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link text-gray-light text-base font-body hover:text-blue-light transition-colors duration-200 py-2 border-b border-slate/30"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="mobile-nav-link gradient-bg text-white text-base font-body font-medium rounded-full px-6 py-3 text-center hover:opacity-90 transition-opacity duration-200 mt-2"
+      >
+        お問い合わせ
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer to prevent content from hiding behind fixed header -->
+<div class="h-16 md:h-20"></div>
+
+<script>
+  const header = document.getElementById("main-header");
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  // Mobile menu toggle
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.classList.toggle("open");
+    mobileMenu?.classList.toggle("hidden", !isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
+    mobileMenu?.setAttribute("aria-hidden", String(!isOpen));
+
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle?.classList.remove("open");
+      mobileMenu?.classList.add("hidden");
+      menuToggle?.setAttribute("aria-expanded", "false");
+      mobileMenu?.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    });
+  });
+
+  // Scroll shadow
+  const handleScroll = () => {
+    if (window.scrollY > 10) {
+      header?.classList.add("shadow-lg", "shadow-black/20");
+    } else {
+      header?.classList.remove("shadow-lg", "shadow-black/20");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+</script>
