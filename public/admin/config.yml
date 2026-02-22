@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-username/hattkun-programming  # ← GitHubリポジトリに合わせて変更してください
+  repo: n1nnin/hattkun-programming
   branch: main
 
 media_folder: public/images/uploads
