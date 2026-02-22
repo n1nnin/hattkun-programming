@@ -6,6 +6,7 @@ import Features from '../components/Features.astro';
 import TargetAudience from '../components/TargetAudience.astro';
 import ScratchGallery from '../components/ScratchGallery.astro';
 import About from '../components/About.astro';
+import Testimonials from '../components/Testimonials.astro';
 import Pricing from '../components/Pricing.astro';
 import FAQ from '../components/FAQ.astro';
 import Blog from '../components/Blog.astro';
@@ -48,10 +49,19 @@ import Footer from '../components/Footer.astro';
 
     <About />
 
-    <!-- Wave: sky → sky-light (pricing) -->
+    <!-- Wave: sky → sky-light (testimonials) -->
     <div class="relative -mt-1 bg-sky">
       <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <path d="M0,30 C240,70 480,10 720,50 C960,80 1200,30 1440,40 L1440,80 L0,80 Z" fill="#F0F7FF"/>
+      </svg>
+    </div>
+
+    <Testimonials />
+
+    <!-- Wave: sky-light → sky-light (pricing) -->
+    <div class="relative -mt-1">
+      <svg class="block w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,30 1440,40 L1440,80 L0,80 Z" fill="#F0F7FF"/>
       </svg>
     </div>
 

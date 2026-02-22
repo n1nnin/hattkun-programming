@@ -1,0 +1,67 @@
+---
+const testimonials = [
+  {
+    name: "小学4年生の保護者",
+    child: "小4男子",
+    text: "ゲームが好きな息子が「自分でゲームを作れた！」と目を輝かせて帰ってきました。先生がとても丁寧に教えてくださるので、パソコン初心者でも安心して通わせています。",
+    highlight: "自分でゲームを作れた！",
+  },
+  {
+    name: "小学5年生の保護者",
+    child: "小5女子",
+    text: "算数が苦手だった娘が、Scratchで図形を描くうちに「角度って面白い！」と言うようになりました。プログラミングを通じて学校の勉強にも良い影響が出ています。",
+    highlight: "角度って面白い！",
+  },
+  {
+    name: "小学3年生の保護者",
+    child: "小3男子",
+    text: "お友達と一緒にグループレッスンを受けています。「次はこうしたい」と家でもアイデアを考えるようになり、創造力が育っているのを実感します。料金もお手頃で助かっています。",
+    highlight: "創造力が育っている",
+  },
+];
+---
+
+<section class="py-20 px-4 bg-sky-light">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section Heading -->
+    <div class="text-center mb-12 md:mb-16 observe-fade">
+      <p class="font-accent text-purple text-2xl mb-2">Voice</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-navy">保護者の声</h2>
+      <p class="font-body text-slate mt-4 max-w-xl mx-auto">
+        実際に通っているお子さまの保護者からいただいた声をご紹介します
+      </p>
+    </div>
+
+    <!-- Testimonial Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <div class="observe-fade bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow duration-300 relative">
+          <!-- Quote Icon -->
+          <div class="absolute top-6 right-6 text-blue/10" aria-hidden="true">
+            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+          </div>
+          <!-- Highlight -->
+          <p class="font-heading text-blue font-bold text-lg mb-4">
+            「{t.highlight}」
+          </p>
+          <!-- Body -->
+          <p class="font-body text-slate leading-relaxed mb-6 text-sm">
+            {t.text}
+          </p>
+          <!-- Attribution -->
+          <div class="flex items-center gap-3 pt-4 border-t border-sky">
+            <div class="w-10 h-10 rounded-full bg-blue/10 flex items-center justify-center">
+              <span class="text-blue font-heading font-bold text-sm">{t.child.slice(0, 2)}</span>
+            </div>
+            <div>
+              <p class="font-heading text-navy font-bold text-sm">{t.name}</p>
+              <p class="text-xs text-slate">{t.child}のお子さま</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

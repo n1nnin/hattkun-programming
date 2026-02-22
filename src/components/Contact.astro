@@ -7,7 +7,7 @@
     <div class="text-center mb-12 observe-fade">
       <p class="font-accent text-blue-light text-2xl mb-2">Contact</p>
       <h2 id="contact-heading" class="font-heading text-3xl md:text-4xl font-bold text-white">お問い合わせ</h2>
-      <p class="text-gray mt-4 font-body text-lg">お気軽にお問い合わせください</p>
+      <p class="text-gray mt-4 font-body text-lg">体験レッスンのお申し込み・ご質問は下記フォームからどうぞ。<br class="hidden sm:inline" />24時間以内にご返信いたします。</p>
     </div>
 
     <!-- Step Flow -->
@@ -73,6 +73,27 @@
             placeholder="example@email.com"
             class="w-full px-4 py-3 rounded-xl border border-sky bg-sky-light/50 font-body text-navy placeholder:text-gray focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-all duration-200"
           />
+        </div>
+
+        <!-- お子さまの学年 -->
+        <div>
+          <label for="grade" class="block font-heading text-navy font-bold text-sm mb-2">
+            お子さまの学年
+          </label>
+          <select
+            id="grade"
+            name="grade"
+            class="w-full px-4 py-3 rounded-xl border border-sky bg-sky-light/50 font-body text-navy focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-all duration-200"
+          >
+            <option value="">選択してください</option>
+            <option value="小学1年生">小学1年生</option>
+            <option value="小学2年生">小学2年生</option>
+            <option value="小学3年生">小学3年生</option>
+            <option value="小学4年生">小学4年生</option>
+            <option value="小学5年生">小学5年生</option>
+            <option value="小学6年生">小学6年生</option>
+            <option value="その他">その他</option>
+          </select>
         </div>
 
         <!-- 題名 -->
