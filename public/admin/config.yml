@@ -3,6 +3,7 @@ backend:
   repo: n1nnin/hattkun-programming
   branch: main
   auth_type: pkce
+  app_id: Ov23liaVEJ54OihBS8Um
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
