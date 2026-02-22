@@ -2,6 +2,7 @@ backend:
   name: github
   repo: n1nnin/hattkun-programming
   branch: main
+  auth_type: pkce
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
