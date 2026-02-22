@@ -2,8 +2,8 @@ backend:
   name: github
   repo: n1nnin/hattkun-programming
   branch: main
-  auth_type: pkce
-  app_id: Ov23liaVEJ54OihBS8Um
+  base_url: https://hattkun-auth.moroku0519.workers.dev
+  auth_endpoint: /auth
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
