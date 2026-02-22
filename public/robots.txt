@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hattkun.hattoripiano-lesson.com/sitemap-index.xml

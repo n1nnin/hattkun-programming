@@ -10,6 +10,8 @@ const {
   title = 'ハットくんのスクラッチプログラミング教室 | 磐田市のプログラミング教室',
   description = '静岡県磐田市のプログラミング教室。Scratch（スクラッチ）を使って、論理的思考力・想像力・問題解決能力を楽しく育みます。小学生対象、体験レッスン受付中。',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://hattkun.hattoripiano-lesson.com');
 ---
 
 <!doctype html>
@@ -23,12 +25,12 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
-    <meta property="og:url" content="https://hattkun.hattoripiano-lesson.com/" />
+    <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:site_name" content="ハットくんのスクラッチプログラミング教室" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <link rel="canonical" href="https://hattkun.hattoripiano-lesson.com/" />
+    <link rel="canonical" href={canonicalURL.href} />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
